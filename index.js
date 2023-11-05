@@ -8,8 +8,15 @@ app.get(['/', '/alive'], (req, res) => {
 });
 
 const root = {
-    hello: () => {
-        return "I'am Mohammed!";
+    product: () => {
+        return {
+            id: require("crypto").randomBytes(10).toString('hex'),
+            name: "Honey",
+            description: "Is coming from savage montain",
+            price: 100.50,
+            soldeout: false,
+
+        };
     }
 };
 

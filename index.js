@@ -7,6 +7,20 @@ app.get(['/', '/alive'], (req, res) => {
     res.send('Server is alive!')
 });
 
+class Product {
+    constructor(id, {name, description, price, soldout, stores}) {
+        this.id = id;
+        this.description = description;
+        this.price = price;
+        this.soldout = soldout;
+        this.stores = stores;
+    }
+
+}
+
+// User to store data
+const productDatabase = {};
+
 const root = {
     product: () => {
         return {
@@ -15,8 +29,16 @@ const root = {
             description: "Is coming from savage montain",
             price: 100.50,
             soldeout: false,
-
+            stores: [
+                {store: "Paris"},
+                {store: "Rabat"},
+            ]
         };
+    },
+    createProduct: ({input}) => {
+        const id = require("crypto").randomBytes(10).toString('hex');
+        productDatabase[id] = input;
+        return new Product(id, input)
     }
 };
 

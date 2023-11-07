@@ -7,6 +7,7 @@ const schema = buildSchema(`
         description: String
         price: Float
         soldout: Boolean
+        inventory: Int
         stores: [Store]
     }
     
@@ -24,6 +25,7 @@ const schema = buildSchema(`
         description: String
         price: Float
         soldout: Boolean
+        inventory: Int
         stores: [StoreInput]
     }
    

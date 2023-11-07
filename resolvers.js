@@ -12,6 +12,7 @@ function generateRandomProduct(id) {
             description: `Product ${random} is a random product`,
             price: Math.random() * 100,
             soldout: random % 2 ? true : false,
+            inventory: random,
             stores: [
                 {store: "Paris"},
                 {store: "Rabat"},

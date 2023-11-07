@@ -1,28 +1,16 @@
 import express from "express";
 import { graphqlHTTP } from "express-graphql";
 import { schema } from "./schema";
+import { resolvers } from "./resolvers";
 
 const app = express();
 app.get(['/', '/alive'], (req, res) => {
     res.send('Server is alive!')
 });
 
-const root = {
-    product: () => {
-        return {
-            id: require("crypto").randomBytes(10).toString('hex'),
-            name: "Honey",
-            description: "Is coming from savage montain",
-            price: 100.50,
-            soldeout: false,
-
-        };
-    }
-};
-
 app.use('/graphql', graphqlHTTP({
     schema: schema,
-    rootValue: root,
+    rootValue: resolvers,
     graphiql: true,
 }));
 

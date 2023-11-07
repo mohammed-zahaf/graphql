@@ -1,0 +1,58 @@
+// Create a product
+mutation {
+  createProduct(input: {
+    name: "Gaza Honey"
+    description: "A very good and healthy Honey Palastenien"
+    price: 159,
+    soldout: false
+    inventory: 159
+    stores: [
+      {store: "Gaza"}
+    ]
+  }){
+    id
+    name
+    description
+    inventory
+  }
+}
+
+// Update a product (update the id to match product)
+mutation {
+  updateProduct(id: "6b3991c19a0b8c19eb2b", input: {
+    name: "Product AAAAA",
+    description: "Description Product A",
+    price: 154.159,
+    soldout: true,
+    inventory: 15,
+    stores: {
+      store: "NJ"
+    }
+  }) {
+    id,
+    name,
+    description,
+    price,
+    soldout,
+    inventory: 15,
+    stores {
+      store
+    }
+  }
+}
+
+mutation {
+  updateProduct(id: "66e4ece806a1d9075395", input: {
+    soldout: ONSALE
+  }) {
+    id
+    name
+    description
+    soldout
+  }
+}
+
+// Remove a product
+mutation {
+  removeProduct(id: "3da51718f8d65331e78f")
+}

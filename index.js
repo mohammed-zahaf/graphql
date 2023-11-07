@@ -1,15 +1,15 @@
 import express from "express";
-import { graphqlHTTP } from "express-graphql";
-import { schema } from "./schema";
-import { resolvers } from "./resolvers";
+import { createHandler } from 'graphql-http/lib/use/express';
+import { schema } from "./data/schema";
+import { resolvers } from "./data/resolvers";
 
 const app = express();
 app.get(['/', '/alive'], (req, res) => {
     res.send('Server is alive!')
 });
 
-app.use('/graphql', graphqlHTTP({
-    schema: schema,
+app.use('/graphql', createHandler({
+    schema,
     rootValue: resolvers,
     graphiql: true,
 }));

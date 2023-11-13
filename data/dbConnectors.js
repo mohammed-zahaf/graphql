@@ -1,22 +1,18 @@
 import mongoose from "mongoose";
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/widgets', {
-    userNewUrlParser: true
+mongoose.connect('mongodb://127.0.0.1:27017/graphql');
+
+const widgetSchema = new mongoose.Schema({
+    name: { type: String },
+    description: { type: String },
+    price: { type: Number },
+    soldout: { type: String },
+    inventory: { type: String },
+    stores: { type: Array },
 });
 
-const wdgetSchema = new mongoose.Schema({
-    id: {type: String},
-    name: {type: String},
-    description: {type: String},
-    price: {type: Number},
-    soldout: {type: String},
-    inventory: {type: String},
-    stores: {type: Array},
-});
-
-const widgets = mongoose.model('widgets', wdgetSchema);
+const Widgets = mongoose.model('widgets', widgetSchema);
 
 export {
-    widgets,
+    Widgets,
 }

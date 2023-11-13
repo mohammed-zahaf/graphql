@@ -36,13 +36,13 @@ const schema = buildSchema(`
    
     type Query {
         getProducts: [Product]
-        getProduct(id: ID): Product
+        getProduct(id: ID!): Product
     }
     
     type Mutation {
-        createProduct(input: ProductInput): Product
-        updateProduct(id: ID, input: ProductInput): Product
-        removeProduct(id: ID): String
+        createProduct(input: ProductInput!): Product
+        updateProduct(id: ID!, input: ProductInput!): Product
+        removeProduct(id: ID!): String
     }
 `)
 
